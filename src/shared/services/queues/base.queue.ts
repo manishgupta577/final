@@ -7,7 +7,7 @@ import { config } from '@root/config';
 import { IAuthJob } from '@auth/interfaces/auth.interface';
  import { IEmailJob } from '@user/interfaces/user.interface';
  import { IPostJobData } from '@post/interfaces/post.interface';
-// import { IReactionJob } from '@reaction/interfaces/reaction.interface';
+ import { IReactionJob } from '@reaction/interfaces/reaction.interface';
 // import { ICommentJob } from '@comment/interfaces/comment.interface';
 // import { IBlockedUserJobData, IFollowerJobData } from '@follower/interfaces/follower.interface';
 // import { INotificationJobData } from '@notification/interfaces/notification.interface';
@@ -15,7 +15,7 @@ import { IAuthJob } from '@auth/interfaces/auth.interface';
 // import { IChatJobData, IMessageData } from '@chat/interfaces/chat.interface';
 
 type IBaseJobData =
-  | IAuthJob | IEmailJob | IPostJobData;
+  | IAuthJob | IEmailJob | IPostJobData | IReactionJob ;
 
 
 let bullAdapters: BullAdapter[] = [];
