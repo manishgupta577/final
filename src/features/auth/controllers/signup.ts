@@ -17,7 +17,7 @@ import { config } from '@root/config';
 import { BadRequestError } from '@global/helpers/error-handler';
 import { UploadApiResponse } from 'cloudinary';
 import { uploads } from '@global/helpers/cloudinary-upload';
-import {omit} from 'lodash';
+// import {omit} from 'lodash';
 
 const userCache: UserCache = new UserCache();
 
@@ -55,13 +55,13 @@ export class SignUp {
     await userCache.saveUserToCache(`${userObjectId}`, uId, userDataForCache);
 
     // // Add to database
-    omit(userDataForCache,['uId','username','email','avatarColor','password']);
+    // omit(userDataForCache,['uId','username','email','avatarColor','password']);
     authQueue.addAuthUserJob('addAuthUserToDB', { value: userDataForCache });
     userQueue.addUserJob('addUserToDB', { value: userDataForCache });
 
     const userJwt: string = SignUp.prototype.signToken(authData, userObjectId);
     req.session = { jwt: userJwt };
-    
+
     res.status(HTTP_STATUS.CREATED).json({ message: 'User created successfully', user: userDataForCache, token: userJwt });
   }
 
